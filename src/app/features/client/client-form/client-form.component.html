@@ -1,1 +1,59 @@
-<p>client-form works!</p>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Middle Name</mat-label>
+    <input matInput placeholder="Middle Name" formControlName="middleName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Last Name" formControlName="lastName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Choose a birth date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthDate">
+    <!--    <mat-hint>MM/DD/YYYY</mat-hint>-->
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Phone Number</mat-label>
+    <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+    <mat-error *ngIf="form.get('phoneNumber')?.errors?.['minlength']">minlength 11</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option *ngFor="let gender of genderTypes" [value]="gender">
+        {{gender}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Client Group</mat-label>
+    <mat-select formControlName="clientGroup" multiple>
+      <mat-option *ngFor="let group of clientGroup" [value]="group.id">{{group.value}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Coordinator</mat-label>
+    <mat-select formControlName="coordinator">
+      <mat-option *ngFor="let coordinator of coordinators" [value]="coordinator.id">
+        {{coordinator.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-slide-toggle formControlName="dontSendSms">Do not send SMS</mat-slide-toggle>
+
+  <button mat-button color="primary" type="submit">Submit Client</button>
+</form>

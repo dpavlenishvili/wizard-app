@@ -1,1 +1,42 @@
-<p>identity-form works!</p>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Document type</mat-label>
+    <mat-select formControlName="documentType">
+      <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.id">
+        {{documentType.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Series</mat-label>
+    <input matInput placeholder="Series" formControlName="series">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Number</mat-label>
+    <input matInput placeholder="Number" formControlName="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Issued by</mat-label>
+    <input matInput placeholder="Issued by" formControlName="issuedBy">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Date of issue</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="issueDate">
+    <!--    <mat-hint>MM/DD/YYYY</mat-hint>-->
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file"
+           id="file"
+           (change)="handleFileInput($event.target)">
+  </div>
+
+  <button mat-button color="primary" type="submit">Submit Identity</button>
+</form>

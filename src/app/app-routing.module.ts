@@ -1,9 +1,11 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
+import {StepperComponent} from "./components/stepper/stepper.component";
 
 export const routes: Routes = [
   {
     path: 'client-form',
+    component: StepperComponent,
     children: [
       {
         path: 'address',
@@ -19,10 +21,28 @@ export const routes: Routes = [
       }
     ]
   },
-  {path: '**', redirectTo: 'clients'}
+  {
+    path: 'clients',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./features/list/list.module').then(m => m.ListModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('./features/single-client/single-client.module').then(m => m.SingleClientModule)
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: 'clients'
+  }
 ]
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

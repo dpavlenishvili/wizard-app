@@ -1,0 +1,18 @@
+<mat-toolbar class="example-toolbar" color="primary">
+  <h1 class="example-app-name">Wizard App</h1>
+</mat-toolbar>
+
+<mat-sidenav-container
+  id="main"
+>
+  <mat-sidenav [mode]="'side'" [opened]="true">
+    <mat-nav-list>
+      <a mat-list-item routerLink=".">Clients</a>
+      <a mat-list-item routerLink="/client-form">create</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

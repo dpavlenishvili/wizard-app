@@ -1,0 +1,32 @@
+<table [dataSource]="dataSource$" class="mat-elevation-z8" mat-table>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell> Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.client.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th *matHeaderCellDef mat-header-cell> Last Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.client.lastName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="gender">
+    <th *matHeaderCellDef mat-header-cell> Gender</th>
+    <td *matCellDef="let element" mat-cell> {{element.client.gender}} </td>
+  </ng-container>
+  <ng-container matColumnDef="birthDate">
+    <th *matHeaderCellDef mat-header-cell> Birth Date</th>
+    <td *matCellDef="let element" mat-cell> {{element.client.birthDate | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th *matHeaderCellDef mat-header-cell></th>
+    <td *matCellDef="let element; let i = index;" mat-cell>
+      <mat-icon (click)="onItemClick(i)">visibility</mat-icon>
+    </td>
+  </ng-container>
+
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns; let i = index" mat-row></tr>
+</table>

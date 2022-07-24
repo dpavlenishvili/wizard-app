@@ -1,1 +1,22 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="stepper">
+    <ng-container *ngIf="(activePage$ | async) as activePage">
+      <div class="steps">
+        <ng-container *ngFor="let step of steps; let i = index">
+          <a (click)="onStepClick(step)" [ngClass]="{ active: activePage === step}" class="step">
+            <span class="icon">{{i}}</span>
+            <span class="label">{{step}}</span>
+          </a>
+          <div *ngIf="i !== steps.length - 1" class="step-divider"></div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="footer">
+    <button (click)="onDiscardChanges()" color="warn" mat-raised-button>Discard Form</button>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

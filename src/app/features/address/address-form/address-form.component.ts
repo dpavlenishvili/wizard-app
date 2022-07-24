@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {addressForm} from "./form";
 import {Country} from "../../../types/country";
 import {COUNTRIES} from "../../../data/countries";
@@ -37,7 +37,6 @@ export class AddressFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value)
     if (this.form.valid) {
       this.store.dispatch(new SubmitAddressPage(this.form.value));
     }

@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-infix {
+  width: 100% !important;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}

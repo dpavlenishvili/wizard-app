@@ -1,4 +1,4 @@
-import {WizardPages} from "../enums";
+import {WizardPages} from "../types/enums";
 import {GeneralClient} from "../types/general-client";
 
 export interface AppState {

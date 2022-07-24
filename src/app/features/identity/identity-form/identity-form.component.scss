@@ -1,0 +1,17 @@
+:host {
+  form {
+    button {
+      float: right;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .file-upload {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+}

@@ -1,1 +1,25 @@
-<p>client works!</p>
+<div class="card-wrapper">
+
+  <mat-card class="example-card">
+    <mat-card-content>
+      <h2>Personal Info</h2>
+      <pre>
+        Full name: {{singleClient?.client?.name}} {{singleClient?.client?.middleName}} {{singleClient?.client?.lastName}}
+        Birth date {{singleClient?.client?.birthDate | date}}
+      </pre>
+
+      <h2>Address</h2>
+      <pre>
+        Country: {{singleClient?.address?.country}}
+        City: {{singleClient?.address?.city}}
+        Street & House: {{singleClient?.address?.street}} / {{singleClient?.address?.house}}
+      </pre>
+
+      <h2>Identity</h2>
+      <pre>
+         Document: {{singleClient?.identity?.documentType}}
+        Date of issue: {{singleClient?.identity?.issueDate | date}}
+      </pre>
+    </mat-card-content>
+  </mat-card>
+</div>
